@@ -2,4 +2,7 @@
 /dist
 /venv
 /RetroGeo.egg-info
+/.idea
+.DS_Store
 /sample.py
+
