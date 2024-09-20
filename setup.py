@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.0.3'
+VERSION = '0.0.4'
 DESCRIPTION = 'RetroGeo:  A simple offline Reverse Geocoder Library'
 LONG_DESCRIPTION = '''
 Our reverse geocoding library is a robust Python tool designed to translate latitude and longitude coordinates into detailed addresses, entirely offline. It processes geographical coordinates, such as latitude and longitude, and returns a full address corresponding to the location, including country, state, city. The library is optimized for performance and accuracy, leveraging pre-downloaded datasets of geographical locations, eliminating the need for online queries or API calls.
