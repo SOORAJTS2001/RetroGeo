@@ -43,6 +43,7 @@ pip install RetroGeo
 ## Example
 
 ### For Single Thread Execution (For a single coordinate pair)
+
 ```python
 import asyncio
 
@@ -50,16 +51,17 @@ from RetroGeo import GeoLocator, ThreadTypeEnum
 
 
 async def main():
-    rev = GeoLocator()
-    locations = [(9.964498569974612, 76.25592213325532)]
-    result = await rev.getLocationFromCoordinates(locations, mode=ThreadTypeEnum.SINGLE_THREADED.value)
-    print(result)
+  rev = GeoLocator()
+  locations = [(9.964498569974612, 76.25592213325532)]
+  result = await rev.query(locations, mode=ThreadTypeEnum.SINGLE_PROCESS.value)
+  print(result)
 
 
 if __name__ == '__main__':
-    asyncio.run(main())
+  asyncio.run(main())
 ```
 ### For Multithread Execution (List of coordinates pairs)
+
 ```python
 import asyncio
 import random
@@ -68,17 +70,17 @@ from RetroGeo import GeoLocator
 
 
 async def main():
-    rev = GeoLocator()
-    locations = []
-    for _ in range(10000):
-        lat = random.uniform(-90, 90)
-        lon = random.uniform(-180, 180)
-        locations.append((lon, lat))
-    results = await rev.getLocationFromCoordinates(locations)
+  rev = GeoLocator()
+  locations = []
+  for _ in range(10000):
+    lat = random.uniform(-90, 90)
+    lon = random.uniform(-180, 180)
+    locations.append((lon, lat))
+  results = await rev.query(locations)
 
 
 if __name__ == '__main__':
-    asyncio.run(main())
+  asyncio.run(main())
 ```
 
 ## Output

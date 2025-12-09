@@ -2,6 +2,8 @@
 
 Code extended from http://folk.uio.no/sturlamo/python/multiprocessing-tutorial.pdf
 """
+import logging
+
 import numpy as np
 import multiprocessing as mp
 import ctypes
@@ -30,8 +32,9 @@ def _pquery(scheduler, data, ndata, ndim, leafsize,
             d_out, i_out = kdtree.query(_x[s, :], k=k, eps=eps, p=p, distance_upper_bound=dub)
             m_d = d_out.shape[0]
             m_i = i_out.shape[0]
-            _d[s, :], _i[s, :] = d_out.reshape(m_d, 1), i_out.reshape(m_i, 1)
-    except:
+            _d[s, :], _i[s, :] = d_out.reshape(m_d, k), i_out.reshape(m_i, k)
+    except Exception as e:
+        logging.error(e)
         ierr.value += 1
 
 def num_cpus():

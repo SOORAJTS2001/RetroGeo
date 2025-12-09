@@ -65,7 +65,7 @@ class GeoLocator:
                 self.df = df.dropna(subset=['admin1_lat', 'admin1_lon', 'admin2_lat', 'admin2_lon'])
                 self.df.to_csv(FILENAME, index=False)
 
-    async def getLocationFromCoordinates(self, locations: list,
-                                         mode: ThreadTypeEnum = ThreadTypeEnum.MULTI_THREADED.value):
+    async def query(self, locations: list,
+                    mode: ThreadTypeEnum = ThreadTypeEnum.MULTI_PROCESS.value):
         await self._load_cities()
         return search(locations, mode=mode)
